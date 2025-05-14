@@ -4,8 +4,7 @@ from langchain.prompts import  PromptTemplate
 from component.embedding import Zhipuembedding,Jinaembedding
 from component.databases import Vectordatabase
 import os
-#把api_key放在环境变量中,可以在系统环境变量中设置，也可以在代码中设置
-os.environ['OPENAI_API_KEY'] = 'sk-VttLrtXYMsKnEs4CD01eA4D39575463486Ef5d7e2a063095'
+openai_api_key = os.getenv("OPENAI_API_KEY")
 
 class Openai_model:
     def __init__(self,model_name:str='gpt-4o-mini',temperature:float=0.9, base_url:str=None) -> None:
@@ -21,7 +20,7 @@ class Openai_model:
         #加载向量数据库，embedding模型
         self.db=Vectordatabase()
         self.db.load_vector()
-        api_key = "sk-VttLrtXYMsKnEs4CD01eA4D39575463486Ef5d7e2a063095" 
+        api_key = openai_api_key
         self.embedding_model=Jinaembedding(api_key=api_key)
         
     #定义chat方法

@@ -1,6 +1,6 @@
 import gradio as gr
 from component.llms import Openai_model
-import time
+
 
 custom_url = 'https://aihubmix.com/v1'
 model=Openai_model(base_url=custom_url)

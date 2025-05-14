@@ -4,10 +4,9 @@ from zhipuai import ZhipuAI
 from typing import List
 import requests
 import json
-
-
-# 初始化JinaAi API
-api_key = "sk-VttLrtXYMsKnEs4CD01eA4D39575463486Ef5d7e2a063095"
+#从系统变量中获取api_key
+import os
+zhipu_api_key = os.getenv("ZhipuAI_API_KEY")
 
 # ZhipuAI 嵌入
 class Zhipuembedding:
@@ -15,7 +14,7 @@ class Zhipuembedding:
     def __init__(self, path:str=''):
         	
 
-        client = ZhipuAI(api_key="352bdc0a3e714e5ea41523cce8d60a7d.TUzcxe3ne5LkWbu6") 
+        client = ZhipuAI(api_key=zhipu_api_key) 
         self.embedding_model=client
 
 
