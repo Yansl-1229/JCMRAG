@@ -175,7 +175,7 @@ class JinaCLIPEmbeddings:
 # Example Usage (for testing this file directly):
 if __name__ == '__main__':
     # 请替换为您的 AiHubMix 密钥
-    api_key = "sk-VttLrtXYMsKnEs4CD01eA4D39575463486Ef5d7e2a063095" 
+    api_key = "sk-**" 
     # 如果您想从环境变量加载API密钥，可以使用以下方式：
     # import os
     # api_key = os.getenv("AIHUBMIX_API_KEY")

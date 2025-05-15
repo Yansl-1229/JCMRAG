@@ -1,12 +1,13 @@
 import os
 import PyPDF2
 import tiktoken
+from PIL import Image
 
 
 # 用于数据切分时，判断字块的token长度，速度比较快
 enc = tiktoken.get_encoding("cl100k_base")
 
-
+# 纯文本模态读取类
 class ReadFile:
 
 
@@ -53,8 +54,6 @@ class ReadFile:
         return chunk_text
 
 
-
-
     #读取文件内容，传入一个文件路径，返回该文件内容字符串
     @classmethod
     def read_file_content(cls, file_path: str):
@@ -97,5 +96,26 @@ class ReadFile:
             docs.extend(chunk_content)
 
         return docs
+
+# 图片文件读取类
+# path: 图片文件夹路径
+class ReadImages:
+    def __init__(self, path):
+        self.path = path
+    def readlist(self):
+        file_list = []
+        for filepath, dirnames, filenames in os.walk(self.path):
+            # os.walk 函数将递归遍历指定文件夹
+            for filename in filenames:
+                if filename.endswith(".jpg") or filename.endswith(".png") or filename.endswith(".jpeg"):
+                    img_path = os.path.join(filepath, filename)
+                    try:
+                        img = Image.open(img_path)
+                        img = img.resize((512, 512))
+                        img.save(img_path)
+                    except Exception as e:
+                        print(f"图片处理失败: {img_path}, 错误信息: {e}")
+                    file_list.append(img_path)
+        return file_list
     
          
