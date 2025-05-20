@@ -9,7 +9,7 @@ zhipu_api_key = os.getenv("ZhipuAI_API_KEY")
 print(zhipu_api_key)
 print(openai.api_key)
 
-
+# 对纯文本pdf文件进行切分
 # filter=ReadFile('./data')
 # docs=filter.get_all_chunk_content(200,150)
 
@@ -23,6 +23,7 @@ print(openai.api_key)
 
 # database.persist()
 
+# 对图片进行切分
 imgfilter = ReadImages('./images')
 
 imglist = imgfilter.readlist()
